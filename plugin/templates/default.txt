@@ -1,0 +1,10 @@
+ ========================================================================
+ file-name:     $+file+
+ full-path:     $+path+
+ version:       $+version+ @+remained+@
+ author:        $+author+
+ email:         $+email+
+ homepage:      $+homepage+
+ last-modified: $+last-modified+
+ description:   $+desc+ @+remained+@
+ ======================================================================== 

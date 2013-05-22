@@ -1,0 +1,45 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4594
+
+插件可以添加/更新文件头注释
+"vimmsf_header_info_range_marker(never modify me)
+" ========================================================================
+" file-name:     header_info.vim
+" full-path:       /home/reaper-spring/programs/vim/header-info/plugin/header_info.vim
+" version:        1.0 
+" author:          u are u
+" email:           uremail@email.com
+" homepage:    ur homepage
+" last-modified: Wed 22 May 2013 09:06:16 PM CST
+" description:    some desc.
+" ======================================================================== 
+"vimmsf_header_info_range_marker(never modify me)
+
+插件会根据不同的文件类型选择不同的注释模板，所谓的模板是保存于插件目录templates中的文件，
+每个文件是一个模板，模板名随意，插件会根据目录中的filetype文件建立关联，每行建立一个关联，
+格式如下：
+filetype -> tpn
+其中filetype对应vim的filetype选项，而tpn便是templates中模板文件名
+比如
+sh -> bash.txt
+vim读取shell脚本后filetype被设置成sh，当调用插件时便会使用bash.txt这个模板文件。
+默认如果在filetype中找不到文件类型对应的模板，则一律使用default.txt
+模板文件可以使用在marker文件中的自定义标记，每行一个。
+格式如下:
+$+mn+ -> action
+其中mn是标记名，action可以是文字常量（必须由单引号包裹），或者一段vim script代码。
+插件存在一个特殊标记，@+remained+@，如果它出现在模板文件行的末尾时，当插件更新文件头时会忽略本行。
+例如模板中有以下行
+file-name: $+file+
+默认的当你编辑的文件名为file.txt时，插件会将其扩展为
+file-name: file.txt
+无论你如何手动修改本行，例如file-name: test.txt, 下次调用插件更新时都会将还原为file-name: file.txt
+除非在模板中为此行加入特殊标记
+file-name: $+file+ @+remained+@
+那么只有当第一次添加会扩展此行，以后的更新都会保留你手动修改的内容。
+另外无需在模板文件中添加注释符，插件会根据vim的commentstring选项自动选择。
+
+目前插件只支持单行字段注释，模板中有多少行就是多少行，不要手动进行增删，
+vimmsf_header_info_range_marker(never modify me)用于标记文件头范围，不要改动。
+
+使用方法: ctrl-k ctrl-h
+

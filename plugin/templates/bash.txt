@@ -1,0 +1,9 @@
+ ========================================================================
+ file-name:     $+file+
+ version:       $+version+ @+remained+@
+ bash-version:  $+bash_version+
+ author:        $+author+
+ email:         $+email+
+ last-modified: $+last-modified+
+ description:   $+desc+ @+remained+@
+ ======================================================================== 
