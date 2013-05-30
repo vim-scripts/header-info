@@ -1,2 +1,2 @@
-'vim'  : 'default.txt',
-'sh' : 'bash.txt',
+vim -> default.txt
+sh  -> bash.txt

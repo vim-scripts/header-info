@@ -9,7 +9,13 @@ if(!exists('g:vimmsf_header_info_range_marker') || g:vimmsf_header_info_range_ma
 endif
 let s:where_installed = expand('<sfile>:p:h')
 fun! s:extract_map (path)"{{{
-    let content = '{' . join(readfile(a:path), '') . '}'
+    let lines = readfile(a:path)
+    let content = ''
+    for line in lines
+        let pair = split(line, '\s*->\s*')
+        let content .= printf('"%s" : "%s",', pair[0], pair[1])
+    endfor
+    let content = '{' . content . '}'
     return eval(content)
 endfun"}}}
 fun! s:get_marked_range (marker)"{{{
